@@ -14,7 +14,6 @@ _release_pre() {
   if [ -z "${GITHUB_TOKEN}" ]; then
     _error "GITHUB_TOKEN is not set."
   fi
-  DATE="发布时间:"`date +%F`"|"`date +%T`
   if [ -z "${TAG_NAME}" ]; then
     if [ -f ./target/TAG_NAME ]; then
       TAG_NAME=$(cat ./target/TAG_NAME | xargs)
@@ -26,7 +25,7 @@ _release_pre() {
     if [ -z "${TAG_NAME}" ]; then
       _error "TAG_NAME is not set."
     else
-      TAG_NAME=$TAG_NAME$DATE
+      TAG_NAME=$TAG_NAME"发布时间:"`date +%F`"|"`date +%T`
     fi
   fi
 
