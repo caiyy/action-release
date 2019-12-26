@@ -14,17 +14,19 @@ _release_pre() {
   if [ -z "${GITHUB_TOKEN}" ]; then
     _error "GITHUB_TOKEN is not set."
   fi
-
+  DATE="发布时间:"`date +%F`"|"`date +%T`
   if [ -z "${TAG_NAME}" ]; then
     if [ -f ./target/TAG_NAME ]; then
-      TAG_NAME=$(cat ./target/TAG_NAME | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
+      TAG_NAME=$(cat ./target/TAG_NAME | xargs)
     elif [ -f ./target/VERSION ]; then
-      TAG_NAME=$(cat ./target/VERSION | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
+      TAG_NAME=$(cat ./target/VERSION | xargs)
     elif [ -f ./VERSION ]; then
-      TAG_NAME=$(cat ./VERSION | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
+      TAG_NAME=$(cat ./VERSION | xargs)
     fi
     if [ -z "${TAG_NAME}" ]; then
       _error "TAG_NAME is not set."
+    else; then
+      TAG_NAME=$TAG_NAME$DATE
     fi
   fi
 
