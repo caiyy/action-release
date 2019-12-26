@@ -25,7 +25,7 @@ _release_pre() {
     fi
     if [ -z "${TAG_NAME}" ]; then
       _error "TAG_NAME is not set."
-    else; then
+    else
       TAG_NAME=$TAG_NAME$DATE
     fi
   fi
