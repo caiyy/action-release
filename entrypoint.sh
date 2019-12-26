@@ -17,11 +17,11 @@ _release_pre() {
 
   if [ -z "${TAG_NAME}" ]; then
     if [ -f ./target/TAG_NAME ]; then
-      TAG_NAME=$(cat ./target/TAG_NAME | xargs)
+      TAG_NAME=$(cat ./target/TAG_NAME | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
     elif [ -f ./target/VERSION ]; then
-      TAG_NAME=$(cat ./target/VERSION | xargs)
+      TAG_NAME=$(cat ./target/VERSION | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
     elif [ -f ./VERSION ]; then
-      TAG_NAME=$(cat ./VERSION | xargs)
+      TAG_NAME=$(cat ./VERSION | xargs)"发布时间:"DATE=`date +%F`"|"`date +%T`
     fi
     if [ -z "${TAG_NAME}" ]; then
       _error "TAG_NAME is not set."
